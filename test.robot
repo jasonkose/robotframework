@@ -4,7 +4,7 @@ Library  RequestsLibrary
 Library  Collections
 
 *** Variables ***
-${TEST_TARGET}=  www.coupang.com
+${TEST_TARGET}=  www.samsung.com
 
 *** Test Cases ***
 Akamai Debug headers
