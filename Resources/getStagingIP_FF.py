@@ -32,17 +32,33 @@ def getStagingIP(hostname):
     print('final cname: '+stagingHostname)
     return str(myanswer[0])
 
-def getedgeip(hostname):
+def getedgeipESSL(hostname):
     edgehostname = hostname + ".edgekey.net"
     myresolver = dns.resolver.Resolver()
     edgeips = myresolver.query(edgehostname, "A")
     #print(edgeips)
     return edgeips
+
+def getedgeipFF(hostname):
+    edgehostname = hostname + ".edgesuite.net"
+    myresolver = dns.resolver.Resolver()
+    edgeips = myresolver.query(edgehostname, "A")
+    #print(edgeips)
+    return edgeips
+
+def getedgeip(hostname):
+    try:
+        edgeips = getedgeipESSL(hostname)
+        return edgeips
+    except dns.resolver.NXDOMAIN:
+        edgeips = getedgeipFF(hostname)
+        return edgeips
+
 if __name__ == "__main__":
-    hostnames = ["www.naver.com"]
+    hostnames = ["www.jasonkose.ga"]
     for hostname in hostnames:
-        results = getStagingIP(hostname)
-        print(results[0])
+        #results = getStagingIP(hostname)
+        #print(results[0])
         edgeips = getedgeip(hostname)
         for edgeip in edgeips:
             print(edgeip)
