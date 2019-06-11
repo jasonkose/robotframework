@@ -33,7 +33,7 @@ def getStagingIP(hostname):
     return str(myanswer[0])
 
 def getedgeip(hostname):
-    edgehostname = hostname + ".edgesuite.net"
+    edgehostname = hostname + ".edgekey.net"
     myresolver = dns.resolver.Resolver()
     edgeips = myresolver.query(edgehostname, "A")
     #print(edgeips)
